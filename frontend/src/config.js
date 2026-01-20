@@ -1,2 +1,2 @@
-export const backendUrl = "https://forever-ecommerce-webbackend.vercel.app"
+export const backendUrl = "http://localhost:4000"
 

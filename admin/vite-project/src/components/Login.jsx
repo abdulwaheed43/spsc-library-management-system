@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 
 
 const Login = ({ setToken }) => {
+  console.log(backendUrl,"Backend URL");
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,7 +14,7 @@ const Login = ({ setToken }) => {
   const onSubmitHandler = async (e) => {
    try {
      e.preventDefault()
-    const response = await axios.post('https://forever-ecommerce-webbackend.vercel.app/api/user/admin', {email,password})
+    const response = await axios.post(`${backendUrl}/api/user/admin`, {email,password})
      if(response.data.success){
       setToken(response.data.token)
      }else{

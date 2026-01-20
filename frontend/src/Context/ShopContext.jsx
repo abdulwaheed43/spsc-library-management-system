@@ -8,7 +8,7 @@ export const ShopContext = createContext();
 const ShopContextProvider = ({ children }) => {
   const currency = "$";
   const delivery_fee = 10;
-  const backendUrl = "https://forever-ecommerce-webbackend.vercel.app";
+  const backendUrl = "http://localhost:4000";
 
   const navigate = useNavigate();
 

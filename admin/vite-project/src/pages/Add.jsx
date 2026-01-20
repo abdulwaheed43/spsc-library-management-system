@@ -70,7 +70,7 @@ const Add = ({ token }) => {
       //   }
       // )
       const response = await axios.post(
-  `https://forever-ecommerce-webbackend.vercel.app/api/product/add`,
+  `${backendUrl}/api/product/add`,
   formData,
   {
     headers: {
@@ -106,7 +106,7 @@ const Add = ({ token }) => {
 
       <div>
         <p className='mb-2'>Upload Images</p>
-        <div className='flex gap-2'>
+        <div className='grid md:grid-cols-4 grid-cols-2  gap-2'>
           {images.map((img, index) => (
             <label key={index}>
               <img
@@ -125,7 +125,7 @@ const Add = ({ token }) => {
         </div>
       </div>
 
-      <div className='w-[500px]'>
+      <div className='w-[250px] md:w-[500px]'>
         <p className='mb-2'>Product Name</p>
         <input
           className='w-full px-3 py-2 border'
@@ -136,7 +136,7 @@ const Add = ({ token }) => {
         />
       </div>
 
-      <div className='w-[500px]'>
+      <div className='w-[250px] md:w-[500px]'>
         <p className='mb-2'>Product Description</p>
         <textarea
           className='w-full px-3 py-2 border'
@@ -146,7 +146,7 @@ const Add = ({ token }) => {
         />
       </div>
 
-      <div className='flex gap-6'>
+      <div className='flex flex-col  md:flex-row  gap-6'>
         <div>
           <p>Category</p>
           <select value={category} onChange={(e) => setCategory(e.target.value)} className='px-3 py-2 border'>
@@ -177,9 +177,9 @@ const Add = ({ token }) => {
         </div>
       </div>
 
-      <div>
+      <div >
         <p className='mb-2'>Sizes</p>
-        <div className='flex gap-2'>
+        <div className='flex flex-col  md:flex-row  gap-2'>
           {['S', 'M', 'L', 'XL', 'XXL'].map(size => (
             <p
               key={size}
