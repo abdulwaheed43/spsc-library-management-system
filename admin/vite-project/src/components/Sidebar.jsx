@@ -36,7 +36,7 @@ const Sidebar = () => {
 
   const linkClass = ({ isActive }) =>
     `flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-1 ${
-      isActive ? 'bg-pink-200 text-gray' : ''
+      isActive ? ' bg-[#d4a257] text-black' : ''
     }`;
 
   return (

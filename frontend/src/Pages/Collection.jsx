@@ -107,76 +107,18 @@ useEffect(() => {
   return (
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 pt-10 border-t">
       {/* Filter Section */}
-      <div className="min-w-60">
-        <p
-          className="my-2 text-xl flex items-center cursor-pointer gap-2"
-          onClick={() => setShowFilter(!showFilter)}
-        >
-          FILTER
-          <img
-            className={`h-3 sm:hidden transition-transform duration-300 ${
-              showFilter ? "rotate-180" : ""
-            }`}
-            src={assets.dropdown_icon}
-            alt="toggle filter"
-          />
-        </p>
-
-        {/* Categories */}
-        <div
-          className={`border border-gray-300 pl-5 py-3 mt-6 ${
-            showFilter ? "block" : "hidden"
-          } sm:block`}
-        >
-          <p className="mb-3 text-sm font-medium">CATEGORIES</p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-            {["Men", "Women", "Kids"].map((cat) => (
-              <label key={cat} className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  className="w-4 h-4 accent-black"
-                  onChange={() => toggleCategory(cat)}
-                  checked={category.includes(cat)}
-                />
-                {cat}
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Types / Subcategories */}
-        <div
-          className={`border border-gray-300 pl-5 py-3 mt-6 mb-6 ${
-            showFilter ? "block" : "hidden"
-          } sm:block`}
-        >
-          <p className="mb-3 text-sm font-medium">TYPES</p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-            {["Topwear", "Bottomwear", "Winterwear"].map((type) => (
-              <label key={type} className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  className="w-4 h-4 accent-black"
-                  onChange={() => togglesubCategory(type)}
-                  checked={subCategory.includes(type)}
-                />
-                {type}
-              </label>
-            ))}
-          </div>
-        </div>
-      </div>
+  
 
       {/* Right Side */}
       <div className="flex-1">
-        <Title text1={"ALL"} text2={"COLLECTIONS"} />
+        <Title text1={"ALL"} text2={"Food"} className="text-[#d4a257] " />
        <div className="relative flex justify-between text-base sm:text-2xl mb-4">
       <div className="absolute right-0 bottom-4">
 
         {/* Sort Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="mt-2 border-2 border-gray-300 px-3 py-1 text-sm flex items-center gap-2"
+          className="mt-2 border-2 border-[#d4a257]  text-[#d4a257]  px-3 py-1 text-sm flex items-center gap-2"
         >
           {sortOption || "Sort"}
           <span className={`transition-transform ${isOpen ? "rotate-180" : ""}`}>
@@ -186,7 +128,7 @@ useEffect(() => {
 
         {/* Dropdown */}
         {isOpen && (
-          <div className="absolute right-0 mt-1 w-48 border border-gray-300 bg-white shadow-md text-sm z-50">
+          <div className="absolute right-0 mt-1 w-48 border border-gray-400 bg-white shadow-md text-sm z-50">
             {selectOptions.map((option, idx) => (
               <div
                 key={idx}
@@ -194,7 +136,7 @@ useEffect(() => {
                   setSortOption(option.value);
                   setIsOpen(false);
                 }}
-                className="px-3 py-2 cursor-pointer hover:bg-gray-100"
+                className="px-3 py-2 cursor-pointer hover:bg-gray-600"
               >
                 {option.title}
               </div>
@@ -205,7 +147,7 @@ useEffect(() => {
     </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6   mb-6">
           {filterProducts.map((item, index) => (
             <ProductItem
               key={index}

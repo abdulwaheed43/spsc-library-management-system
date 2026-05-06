@@ -23,7 +23,7 @@ const App = () => {
   }, [token])
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-black text-white min-h-screen">
       <ToastContainer />
 
       {token === '' ? (
@@ -36,7 +36,7 @@ const App = () => {
           <div className="flex w-full">
             <Sidebar />
 
-            <div className="flex-1 max-w-[70%] mx-auto my-8 text-gray-600 text-base">
+            <div className="flex-1 max-w-[70%] mx-auto my-8 text-[#d4a257] text-base">
               <Routes>
                 <Route path="/" element={<Add token={token} />} />
                 <Route path="/add" element={<Add token={token} />} />

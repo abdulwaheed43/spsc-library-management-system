@@ -108,11 +108,11 @@ const PlaceOrder = () => {
     >
       {/* DELIVERY INFORMATION */}
       <div className="w-full sm:max-w-[480px] flex flex-col gap-4">
-        <Title text1="DELIVERY" text2="INFORMATION" />
+        <Title text1="DELIVERY" text2="INFORMATION" className="text-[#d4a257]" />
 
-        <div className="flex gap-3">
+        <div className="flex  gap-3 ">
           <input
-            className={inputStyle}
+         className={`${inputStyle} bg-black placeholder:text-gray-300 border border-[#d4a257]`}
             name="firstName"
             value={formData.firstName}
             onChange={onChangeHandler}
@@ -120,7 +120,7 @@ const PlaceOrder = () => {
             required
           />
           <input
-            className={inputStyle}
+           className={`${inputStyle} bg-black placeholder:text-gray-300 border-[#d4a257]`}
             name="lastName"
             value={formData.lastName}
             onChange={onChangeHandler}
@@ -130,7 +130,7 @@ const PlaceOrder = () => {
         </div>
 
         <input
-          className={inputStyle}
+ className={`${inputStyle} bg-black placeholder:text-gray-300 border-[#d4a257]`}
           name="email"
           type="email"
           value={formData.email}
@@ -140,7 +140,7 @@ const PlaceOrder = () => {
         />
 
         <input
-          className={inputStyle}
+         className={`${inputStyle} bg-black placeholder:text-gray-300 border-[#d4a257]`}
           name="street"
           value={formData.street}
           onChange={onChangeHandler}
@@ -150,7 +150,7 @@ const PlaceOrder = () => {
 
         <div className="flex gap-3">
           <input
-            className={inputStyle}
+            className={`${inputStyle} bg-black placeholder:text-gray-300 border-[#d4a257]`}
             name="city"
             value={formData.city}
             onChange={onChangeHandler}
@@ -158,7 +158,7 @@ const PlaceOrder = () => {
             required
           />
           <input
-            className={inputStyle}
+           className={`${inputStyle} bg-black placeholder:text-gray-300 border-[#d4a257]`}
             name="state"
             value={formData.state}
             onChange={onChangeHandler}
@@ -169,7 +169,7 @@ const PlaceOrder = () => {
 
         <div className="flex gap-3">
           <input
-            className={inputStyle}
+            className={`${inputStyle} bg-black placeholder:text-gray-300 border-[#d4a257]`}
             name="zipcode"
             value={formData.zipcode}
             onChange={onChangeHandler}
@@ -177,7 +177,7 @@ const PlaceOrder = () => {
             required
           />
           <input
-            className={inputStyle}
+          className={`${inputStyle} bg-black placeholder:text-gray-300 border-[#d4a257]`}
             name="country"
             value={formData.country}
             onChange={onChangeHandler}
@@ -187,7 +187,7 @@ const PlaceOrder = () => {
         </div>
 
         <input
-          className={inputStyle}
+          className={`${inputStyle} bg-black placeholder:text-gray-300 border-[#d4a257]`}
           name="phone"
           value={formData.phone}
           onChange={onChangeHandler}
@@ -197,13 +197,13 @@ const PlaceOrder = () => {
       </div>
 
       {/* PAYMENT & CART TOTAL */}
-      <div className="w-full sm:max-w-[480px]">
+      <div className="w-full text-gray-300 sm:max-w-[480px]">
         <CartTotal />
 
         <div className="mt-8">
-          <Title text1="PAYMENT" text2="METHODS" />
+          <Title text1="PAYMENT" text2="METHODS" className="text-[#d4a257]" />
 
-          <div className="flex flex-col gap-3 mt-4">
+          <div className="flex flex-col gap-3 mt-4 border-gray-300">
             <PaymentOption
               option="stripe"
               // text="Stripe"
@@ -229,7 +229,7 @@ const PlaceOrder = () => {
           <button
        
             type="submit"
-            className="mt-8 bg-black text-white px-8 py-3 w-full rounded-md"
+            className="mt-8 bg-[#cf9a4a] text-black px-8 py-3 w-full rounded-md"
           >
             Place Order
           </button>
@@ -244,7 +244,7 @@ const PaymentOption = ({ option, text, logo, method, setMethod }) => (
   <div
     onClick={() => setMethod(option)}
     className={`flex items-center gap-3 border p-3 cursor-pointer rounded ${
-      method === option ? "border-green-500" : "border-gray-300"
+      method === option ? "border-gray-300" : "border-gray-300"
     }`}
   >
     <span

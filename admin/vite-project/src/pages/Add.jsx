@@ -126,7 +126,7 @@ const Add = ({ token }) => {
       </div>
 
       <div className='w-[250px] md:w-[500px]'>
-        <p className='mb-2'>Product Name</p>
+        <p className='mb-2'>Food Name</p>
         <input
           className='w-full px-3 py-2 border'
           type="text"
@@ -137,7 +137,7 @@ const Add = ({ token }) => {
       </div>
 
       <div className='w-[250px] md:w-[500px]'>
-        <p className='mb-2'>Product Description</p>
+        <p className='mb-2'>Food Description</p>
         <textarea
           className='w-full px-3 py-2 border'
           value={description}
@@ -148,20 +148,20 @@ const Add = ({ token }) => {
 
       <div className='flex flex-col  md:flex-row  gap-6'>
         <div>
-          <p>Category</p>
+          <p>test</p>
           <select value={category} onChange={(e) => setCategory(e.target.value)} className='px-3 py-2 border'>
-            <option>Men</option>
-            <option>Women</option>
-            <option>Kids</option>
+            <option>Medium</option>
+            <option>spicy</option>
+            <option>normal</option>
           </select>
         </div>
 
         <div>
-          <p>Sub Category</p>
+          <p>Food Category</p>
           <select value={subCategory} onChange={(e) => setSubCategory(e.target.value)} className='px-3 py-2 border'>
-            <option>Topwear</option>
-            <option>Bottomwear</option>
-            <option>Winterwear</option>
+            <option>Fast Food</option>
+            <option>vegi</option>
+            <option>non vegi</option>
           </select>
         </div>
 
@@ -178,13 +178,13 @@ const Add = ({ token }) => {
       </div>
 
       <div >
-        <p className='mb-2'>Sizes</p>
+        <p className='mb-2'>amount</p>
         <div className='flex flex-col  md:flex-row  gap-2'>
-          {['S', 'M', 'L', 'XL', 'XXL'].map(size => (
+          {['kilo', 'half', 'full'].map(size => (
             <p
               key={size}
               onClick={() => toggleSize(size)}
-              className={`px-3 py-1 cursor-pointer border ${sizes.includes(size) ? 'bg-pink-500 text-white' : 'bg-slate-200'}`}
+              className={`px-3 py-1 cursor-pointer border ${sizes.includes(size) ? 'bg-[#d4a257] text-white' : 'bg-slate-200'}`}
             >
               {size}
             </p>
@@ -212,80 +212,99 @@ const Add = ({ token }) => {
 export default Add
 
 
-
 // import React, { useState } from 'react'
 // import { assets } from '../assets/assets'
 // import axios from 'axios'
 // import { backendUrl } from '../config'
+// import { toast } from 'react-toastify'
 
-// const Add = ({token}) => {
+// const Add = ({ token }) => {
 
 //   const [images, setImages] = useState([null, null, null, null])
-
-//   const [name, setName] = useState("")
-//   const [description, setDescription] = useState("")
-//   const [price, setPrice] = useState("")
-//   const [category, setCategory] = useState("Men")
-//   const [subCategory, setSubCategory] = useState("Topwear")
+//   const [name, setName] = useState('')
+//   const [description, setDescription] = useState('')
+//   const [price, setPrice] = useState('')
+//   const [category, setCategory] = useState('Pizza')
+//   const [foodType, setFoodType] = useState('Veg')
+//   const [prepTime, setPrepTime] = useState('')
+//   const [available, setAvailable] = useState(true)
 //   const [bestseller, setBestseller] = useState(false)
-//   const [sizes, setSizes] = useState([])
 
-//   // image handler
 //   const handleImageChange = (index, file) => {
 //     const updatedImages = [...images]
 //     updatedImages[index] = file
 //     setImages(updatedImages)
 //   }
 
-//   // size toggle
-//   const toggleSize = (size) => {
-//     setSizes(prev =>
-//       prev.includes(size)
-//         ? prev.filter(s => s !== size)
-//         : [...prev, size]
-//     )
-//   }
-
-//   // submit handler
-//   const onSubmitHandler = (e) => {
+//   const onSubmitHandler = async (e) => {
 //     e.preventDefault()
 
 //     try {
 //       const formData = new FormData()
 
-//       formData.append("name", name)
-//       formData.append("description", description)
-//       formData.append("price", price)
-//       formData.append("category", category)
-//       formData.append("subCategory", subCategory)
-//       formData.append("bestseller", bestseller)
-//       formData.append("sizes", JSON.stringify(sizes))
+//       formData.append('name', name)
+//       formData.append('description', description)
+//       formData.append('price', Number(price))
+//       formData.append('category', category)
+//       formData.append('foodType', foodType)
+//       formData.append('prepTime', prepTime)
+//       formData.append('available', available)
+//       formData.append('bestSeller', bestseller)
 
-//       image1 && formData.append("image1", image1)
-//       image2 && formData.append("image2", image2)
-//       image3 && formData.append("image3", image3)
-//       image4 && formData.append("image4", image4)
+//       images.forEach((img, index) => {
+//         if (img) {
+//           formData.append(`image${index + 1}`, img)
+//         }
+//       })
 
-//       const response = await axios.post(backendUrl + "/api/product/add" , formData, {headers:{token}})
-//       console.log(response.data);
-      
+//       const response = await axios.post(
+//         `${backendUrl}/api/product/add`,
+//         formData,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//             "Content-Type": "multipart/form-data"
+//           }
+//         }
+//       )
+
+//       if (response.data.success) {
+//         toast.success("Food item added successfully")
+
+//         setImages([null, null, null, null])
+//         setName('')
+//         setDescription('')
+//         setPrice('')
+//         setPrepTime('')
+//         setBestseller(false)
+//         setAvailable(true)
+//         setFoodType('Veg')
+//         setCategory('Pizza')
+
+//       } else {
+//         toast.error(response.data.message)
+//       }
+
 //     } catch (error) {
-      
+//       toast.error(error.message)
 //     }
-
 //   }
 
 //   return (
-//     <form onSubmit={onSubmitHandler} className='flex flex-col w-full items-start gap-4'>
+//     <form onSubmit={onSubmitHandler} className='flex flex-col gap-5 w-full'>
 
-//       {/* Upload Images */}
+//       {/* IMAGE UPLOAD */}
 //       <div>
-//         <p className='mb-2'>Upload Images</p>
-//         <div className='flex gap-2'>
+//         <p className='mb-2 font-semibold'>Upload Food Images</p>
+//         <div className='grid grid-cols-2 md:grid-cols-4 gap-3'>
+
 //           {images.map((img, index) => (
-//             <label key={index}>
+//             <label
+//               key={index}
+//               className=' p-2 rounded-md cursor-pointer flex items-center justify-center'
+//             >
 //               <img
-//                 className='w-20 h-20 object-cover cursor-pointer'
+//                 className='w-20 h-20 object-cover rounded'
 //                 src={img ? URL.createObjectURL(img) : assets.upload_area}
 //                 alt=""
 //               />
@@ -296,105 +315,101 @@ export default Add
 //               />
 //             </label>
 //           ))}
+
 //         </div>
 //       </div>
 
-//       {/* Product Name */}
-//       <div className='w-[500px]'>
-//         <p className='mb-2'>Product Name</p>
+//       {/* FOOD NAME */}
+//       <input
+//         placeholder='Food Name'
+//         className='border border-gray-400 px-3 py-2 bg-black text-gray-300 placeholder-gray-300'
+//         value={name}
+//         onChange={(e) => setName(e.target.value)}
+//         required
+//       />
+
+//       {/* DESCRIPTION */}
+//       <textarea
+//         placeholder='Food Description'
+//         className='border border-gray-300 px-3 py-2 bg-black text-gray-300 placeholder-gray-300'
+//         value={description}
+//         onChange={(e) => setDescription(e.target.value)}
+//         required
+//       />
+
+//       {/* CATEGORY + TYPE */}
+//       <div className='flex flex-col md:flex-row gap-4'>
+
+//         <select
+//           value={category}
+//           onChange={(e) => setCategory(e.target.value)}
+//           className='border border-gray-300 px-3 py-2 text-gray-300 bg-black'
+//         >
+//           <option>Pizza</option>
+//           <option>Burger</option>
+//           <option>Drinks</option>
+//           <option>Deserts</option>
+//         </select>
+
+//         <select
+//           value={foodType}
+//           onChange={(e) => setFoodType(e.target.value)}
+//           className='border border-gray-300 px-3 py-2 text-gray-300 bg-black'
+//         >
+//           <option>Veg</option>
+//           <option>Non-Veg</option>
+//         </select>
+
+//       </div>
+
+//       {/* PRICE + PREP TIME */}
+//       <div className='flex flex-col md:flex-row gap-4'>
+
 //         <input
-//           className='w-full px-3 py-2 border'
-//           type="text"
-//           value={name}
-//           onChange={(e) => setName(e.target.value)}
-//           placeholder='Type here'
+//           type="number"
+//           placeholder='Price'
+//           className='border border-gray-300 px-3 py-2 text-[#d4a257] bg-black placeholder-gray-300'
+//           value={price}
+//           onChange={(e) => setPrice(e.target.value)}
 //           required
 //         />
-//       </div>
 
-//       {/* Description */}
-//       <div className='w-[500px]'>
-//         <p className='mb-2'>Product Description</p>
-//         <textarea
-//           className='w-full px-3 py-2 border'
-//           value={description}
-//           onChange={(e) => setDescription(e.target.value)}
-//           placeholder='Description here'
-//           required
+//         <input
+//           type="number"
+//           placeholder='Preparation Time (mins)'
+//           className='border border-gray-300 px-3 py-2 text-[#d4a257] bg-black placeholder-gray-300'
+//           value={prepTime}
+//           onChange={(e) => setPrepTime(e.target.value)}
 //         />
+
 //       </div>
 
-//       {/* Category / Price */}
-//       <div className='flex gap-6'>
-//         <div>
-//           <p>Category</p>
-//           <select
-//             className='px-3 py-2 border'
-//             value={category}
-//             onChange={(e) => setCategory(e.target.value)}
-//           >
-//             <option>Men</option>
-//             <option>Women</option>
-//             <option>Kids</option>
-//           </select>
-//         </div>
+//       {/* CHECKBOXES */}
+//       <div className='flex flex-col gap-2 text-gray-300'>
 
-//         <div>
-//           <p>Sub Category</p>
-//           <select
-//             className='px-3 py-2 border'
-//             value={subCategory}
-//             onChange={(e) => setSubCategory(e.target.value)}
-//           >
-//             <option>Topwear</option>
-//             <option>Bottomwear</option>
-//             <option>Winterwear</option>
-//           </select>
-//         </div>
-
-//         <div>
-//           <p>Price</p>
+//         <label className='flex gap-2 items-center '>
 //           <input
-//             className='px-3 py-2 border'
-//             type="number"
-//             value={price}
-//             onChange={(e) => setPrice(e.target.value)}
-//             placeholder='25'
-//             required
+//             type="checkbox"
+//             checked={available}
+//             onChange={() => setAvailable(!available)}
 //           />
-//         </div>
+//           Available
+//         </label>
+
+//         <label className='flex gap-2 items-center'>
+//           <input
+//             type="checkbox"
+//             checked={bestseller}
+//             onChange={() => setBestseller(!bestseller)}
+//           />
+//           Add to Bestseller
+//         </label>
+
 //       </div>
 
-//       {/* Sizes */}
-//       <div>
-//         <p className='mb-2'>Sizes</p>
-//         <div className='flex gap-2'>
-//           {["S", "M", "L", "XL", "XXL"].map(size => (
-//             <p
-//               key={size}
-//               onClick={() => toggleSize(size)}
-//               className={`px-3 py-1 cursor-pointer border 
-//               ${sizes.includes(size) ? "bg-pink-300 text-white" : "bg-slate-200"}`}
-//             >
-//               {size}
-//             </p>
-//           ))}
-//         </div>
-//       </div>
-
-//       {/* Bestseller */}
-//       <div className='flex gap-2 items-center'>
-//         <input
-//           type="checkbox"
-//           checked={bestseller}
-//           onChange={() => setBestseller(!bestseller)}
-//         />
-//         <label>Add to Bestseller</label>
-//       </div>
-
-//       {/* Submit */}
-//       <button type='submit' className='w-28 py-3 bg-black text-white'>
-//         ADD
+//       {/* SUBMIT */}
+//       <button className='bg-[#d4a257] text-black py-2 w-32 rounded-full'>
+//         ADD FOOD
 //       </button>
 
 //     </form>

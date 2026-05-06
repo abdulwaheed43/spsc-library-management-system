@@ -223,14 +223,14 @@ const Cart = () => {
   return (
     <div className="border-t pt-14 max-w-6xl mx-auto px-4 mb-10">
       <div className="text-2xl mb-6">
-        <Title text1="YOUR" text2="CART" />
+        <Title text1="YOUR" text2="CART" className="text-[#d4a257]"/>
       </div>
 
       <div className="space-y-6">
         {cartData.map((item, index) => (
           <div
             key={index}
-            className="py-4 border rounded-lg text-gray-700 
+            className="py-4 border border-[#d4a257] rounded-lg text-[#d4a257]
             grid grid-cols-[4fr_1fr_1fr] 
             sm:grid-cols-[4fr_2fr_1fr] 
             items-center gap-4"
@@ -244,7 +244,7 @@ const Cart = () => {
               />
               <div>
                 <p className="text-sm sm:text-lg font-medium">{item.product.name}</p>
-                <p className="text-xs text-gray-500 mt-1">Size: {item.size}</p>
+                <p className="text-xs text-[#d4a257] mt-1">Size: {item.size}</p>
                 <p className="font-semibold">
                   {currency}{item.product.price * item.quantity}
                 </p>
@@ -255,14 +255,14 @@ const Cart = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => decrementCartItem(item._id, item.size)}
-                className="w-8 h-8 border rounded hover:bg-gray-100"
+                className="w-8 h-8 border border-[#d4a257] rounded hover:bg-gray-100"
               >
                 −
               </button>
               <span className="font-semibold">{item.quantity}</span>
               <button
                 onClick={() => incrementCartItem(item._id, item.size)}
-                className="w-8 h-8 border rounded hover:bg-gray-100"
+                className="w-8 h-8 border border-[#d4a257] rounded hover:bg-gray-100"
               >
                 +
               </button>
@@ -288,7 +288,7 @@ const Cart = () => {
           <div className="w-full text-start mt-10">
             <button
               onClick={() => navigate("/place-order")}
-              className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+              className="bg-[#d4a257] rounded-full text-black px-8 py-3 text-sm active:bg-gray-700"
             >
               PLACE ORDER
             </button>

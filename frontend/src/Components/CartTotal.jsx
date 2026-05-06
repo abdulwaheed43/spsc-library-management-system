@@ -41,12 +41,12 @@ const CartTotal = () => {
   const total = subtotal === 0 ? 0 : subtotal + delivery_fee;
 
   return (
-    <div className="w-full">
+    <div className="w-full text-[#d4a257]">
       <div className="text-2xl mb-3">
-        <Title text1="CART" text2="TOTALS" />
+        <Title text1="CART" text2="TOTALS" className="text-[#d4a257]"/>
       </div>
 
-      <div className="flex flex-col gap-3 mt-2 text-sm">
+      <div className="flex flex-col text-gray-300 gap-3 mt-2 text-sm">
         
         {/* Subtotal */}
         <div className="flex justify-between">

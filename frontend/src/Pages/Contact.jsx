@@ -1,88 +1,122 @@
-// import React from 'react'
-// import Title from "../Components/Title";
-// import { assets } from '../assets/assets';
-
-// const Contact = () => {
-//   return (
-    
-//       <div>
-//       <div className='text-2xl'>
-//         <Title text1={'CONTACT'} text2={'US'} />
-//       </div>
-    
-//       <div className='my-10 flex flex-col justify-center md:flex-row gap-10 mb-28'>
-//       <img className='w-full md:max-w-[480px]' src={assets.contact_img} alt="" />
-//       <div className='flex flex-col justify-center items-start gap-6'>
-//       <p></p>
-//       <p></p>
-//       <p></p>
-//       <p></p>
-//       <p></p>
-//       <button></button>
-//       </div>
-//       </div>
-//       </div>
-    
-//   )
-// }
-
-// export default Contact;
-
-import React from 'react';
+import React, { useState } from 'react';
 import Title from "../Components/Title";
 import { assets } from '../assets/assets';
 
 const Contact = () => {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    foodName: "",
+    foodType: "Medium",
+    message: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Order Submitted:", formData);
+    alert("Your order has been placed!");
+  };
+
   return (
-    <div className='border-t pt-16'>
+    <div className='border-t pt-8 pl-10'>
 
       {/* Title */}
       <div className='text-2xl text-center'>
-        <Title text1={'CONTACT'} text2={'US'} />
+        <Title text1={'ORDER'} text2={'NOW'} className="text-[#d4a257]" />
       </div>
 
-      {/* Content */}
-      <div className='my-10 flex flex-col justify-center md:flex-row gap-8 mb-28 px-4'>
+      <div className='my-10 flex flex-col md:flex-row gap-10 px-4'>
 
         {/* Image */}
         <img 
-          className='w-full md:max-w-[480px] rounded-lg mr-10' 
+          className='w-full md:max-w-[450px] rounded-lg' 
           src={assets.contact_img} 
-          alt="Contact Us" 
+          alt="Restaurant"
         />
 
-        {/* Info */}
-        <div className='flex flex-col justify-center items-start gap-4 max-w-md'>
+        {/* Form */}
+        <form 
+          onSubmit={handleSubmit}
+          className='flex flex-col gap-4 w-full max-w-md text-white'
+        >
 
-          <p className='text-gray-600'>
-            <b> Have questions or need support? We're here to help.</b>
-           
-          </p>
+          <input 
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className='border bg-black px-4 py-2 rounded placeholder:text-gray-300 border-gray-300 '
+          />
 
-          <p className='text-gray-700'>
-           <span className='font-medium'><b>Address:b</b></span>  
-            <br /> PECHS Block 2, Karachi, Pakistan
-          </p>
+          <input 
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className='border bg-black px-4 py-2 rounded placeholder:text-gray-300 border-gray-300'
+          />
 
-          <p className='text-gray-700'>
-            <span className='font-medium'><b>Phone:</b></span>  
-            <br /> +92 300 v0v00
-          </p>
+          <input 
+            type="text"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            className='border bg-black px-4 py-2 rounded placeholder:text-gray-300 border-gray-300'
+          />
 
-          <p className='text-gray-700'>
-            <span className='font-medium'><b>Email:</b></span>  
-            <br /> support@example.com
-          </p>
+          <input 
+            type="text"
+            name="foodName"
+            placeholder="Food Name (e.g. Biryani)"
+            value={formData.foodName}
+            onChange={handleChange}
+            required
+            className='border bg-black px-4 py-2 rounded placeholder:text-gray-300 border-gray-300'
+          />
 
-          <p className='text-gray-600 mb-5'>
-            <b>Our team is available Monday to Friday, 9am – 6pm.</b>
-          </p>
+          {/* Food Type */}
+          <select 
+            name="foodType"
+            value={formData.foodType}
+            onChange={handleChange}
+            className='border bg-[#d4a257] px-4 py-2 rounded placeholder:text-gray-300 border-gray-300 text-black'
+          >
+            <option value="Low">Low Spicy</option>
+            <option value="Medium">Medium Spicy</option>
+            <option value="High">High Spicy</option>
+          </select>
 
-          <button className='bg-black text-white px-6 py-2 mt-2 hover:bg-gray-800 transition-all'>
-           Explore jobs
+          <textarea 
+            name="message"
+            placeholder="Additional Message"
+            value={formData.message}
+            onChange={handleChange}
+            className='border bg-black px-4 py-2 rounded placeholder:text-gray-300 border-gray-300'
+          />
+
+          <button 
+            type="submit"
+            className='bg-[#d4a257] text-black  py-2 hover:bg-[#b9873b] transition'
+          >
+            Order Now
           </button>
 
-        </div>
+        </form>
 
       </div>
     </div>
