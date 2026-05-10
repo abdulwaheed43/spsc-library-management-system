@@ -1,87 +1,71 @@
-// import React from "react";
-// import { Routes, Route } from "react-router-dom";
-// import Home from "./Pages/Home";
-// import Collection from "./Pages/Collection";
-// import About from "./Pages/About";
-// import Login from "./Pages/Login";
-// import Contact from "./Pages/Contact";
-// import Product from "./Pages/Product";
-// import Cart from "./Pages/Cart";
-// import PlaceOrder from "./Pages/PlaceOrder";
-// import Orders from "./Pages/Orders";
-// import Navbar from "./Components/Navbar";
-// import Footer from "./Components/Footer";
-// import SearchBar from "./Components/SearchBar";
-//  import { ToastContainer, toast } from 'react-toastify';
-
-// const App = () => {
-//   return (
-//     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
-//       <ToastContainer />
-//       <Navbar />
-//        <SearchBar/>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/collection" element={<Collection />} />
-//         <Route path="/about" element={<About />} />
-//         <Route path="/contact" element={<Contact />} />
-//         <Route path="/product/:productid" element={<Product />} />
-//         <Route path="/login" element={<Login />} />
-//         <Route path="/cart" element={<Cart />} />
-//         <Route path="/place-order" element={<PlaceOrder />} />
-//         <Route path="/orders" element={<Orders />} />
-//       </Routes>
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default App;
-
-
 import React from "react";
 import Home from "./Pages/Home";
-import Collection from "./Pages/Collection";
-import About from "./Pages/About";
+
+import English from "./Pages/English";
+
 import Login from "./Pages/Login";
 import Contact from "./Pages/Contact";
-import Product from "./Pages/Product";
-import Cart from "./Pages/Cart";
-import PlaceOrder from "./Pages/PlaceOrder";
-import Orders from "./Pages/Orders";
+
+
+
 import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
-import SearchBar from "./Components/SearchBar";
+
+
+
+import General from "./pages/general";
+import CAffairs from "./pages/caffairs";
+import PAffairs from "./pages/paffairs";
+import Islamic from "./pages/islamic";
+import PcEnglish from "./pages/pcenglish";
+// import lines
+import eco from "./Pages/eco";
+import Soco from "./Pages/Soco";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route, useLocation } from "react-router-dom";
-
+import Eco from "./Pages/eco";
 
 const App = () => {
+
+  const location = useLocation();
+
+  const hideNavbarRoutes = ["/login", "/signup", "/register"];
+
   return (
+    <div className="min-h-screen bg-[#0c1220] px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+
+      <ToastContainer />
+
+      {/* Navbar conditional render */}
+      {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
 
 
-<div className="min-h-screen bg-black px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
-  <ToastContainer />
 
-  {/* 🔥 Conditional Navbar */}
-  {!["/login", "/signup", "/register"].includes(useLocation().pathname) && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+     
+        <Route path="/english" element={<English />} />
+        <Route path="/general" element={<General />} />
+        <Route path="/caffairs" element={<CAffairs />} />
+        <Route path="/paffairs" element={<PAffairs />} />
+        <Route path="/islamic" element={<Islamic />} />
+        <Route path="/pc-english" element={<PcEnglish />} />
 
-  <SearchBar />
+    
+        <Route path="/contact" element={<Contact />} />
 
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/collection" element={<Collection />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/contact" element={<Contact />} />
-    <Route path="/product/:productid" element={<Product />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/cart" element={<Cart />} />
-    <Route path="/place-order" element={<PlaceOrder />} />
-    <Route path="/orders" element={<Orders />} />
-  </Routes>
+       
+        // route lines
+        <Route path="/economics" element={<Eco/>} />
+        <Route path="/sociology" element={<Soco />} />
+        <Route path="/login" element={<Login />} />
+ 
+  
+      
+      </Routes>
 
-  <Footer />
-</div>
+
+
+    </div>
   );
 };
 
