@@ -25,18 +25,17 @@ const Login = ({ setToken }) => {
      toast.error(error.message)
     
    }
-    // TEMP login success
-    // setToken('logged_in')
+   
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center w-full">
       <div className="bg-black shadow-md rounded-lg px-8 py-6 max-w-md">
-        <h1 className="text-2xl text-[#d4a257] font-bold mb-4">Admin Panel</h1>
+        <h1 className="text-2xl text-[#06B6D4] font-bold mb-4">Admin Panel</h1>
 
         <form onSubmit={onSubmitHandler}>
           <div className="mb-3 min-w-72">
-            <p className="text-sm font-medium text-[#d4a257] mb-2">
+            <p className="text-sm font-medium text-[#06B6D4] mb-2">
               Email Address
             </p>
           <input
@@ -44,13 +43,13 @@ const Login = ({ setToken }) => {
   placeholder="your@gmail.com"
   value={email}
   onChange={(e) => setEmail(e.target.value)}
-  className="rounded-md w-[300px] px-3 py-2 bg-black text-[#d4a257] placeholder:text-[#d4a257] border border-[#d4a257] outline-none focus:border-[#d4a257]"
+  className="rounded-md w-[300px] px-3 py-2 bg-black text-[#06B6D4] placeholder:text-[#06B6D4] border border-[#06B6D4] outline-none focus:border-[#06B6D4]"
   required
 />
           </div>
 
           <div>
-            <p className="text-sm font-medium text-[#d4a257] mb-2">
+            <p className="text-sm font-medium text-[#06B6D4] mb-2">
               Password
             </p>
 <input
@@ -58,14 +57,14 @@ const Login = ({ setToken }) => {
   placeholder="enter your password"
   value={password}
   onChange={(e) => setPassword(e.target.value)}
-  className="rounded-md w-[300px] mb-10 px-3 py-2 bg-black text-[#d4a257] placeholder:text-[#d4a257] border border-[#d4a257] outline-none focus:outline-none focus:ring-0 focus:border-[#d4a257]"
+  className="rounded-md w-[300px] mb-10 px-3 py-2 bg-black text-[#06B6D4] placeholder:text-[#06B6D4] border border-[#06B6D4] outline-none focus:outline-none focus:ring-0 focus:border-[#06B6D4]"
   required
 />
           </div>
 
           <button
             type="submit"
-            className="mt-2 w-full py-2 px-4 rounded-full text-black bg-[#d4a257]"
+            className="mt-2 w-full py-2 px-4 rounded-full text-black bg-[#06B6D4]"
           >
             Login
           </button>
